@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Geo Fishin – Early Access & Partners</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Join early access to Geo Fishin and partner with us to bring hope, adventure, and rewards to every cast." />
+  <style>
+    :root {
+      --bg-dark: #020617;
+      --bg-card: #020617;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.15);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --danger: #f97373;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #4ade80, #22c55e 40%, #16a34a 70%, #0f766e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #020617;
+      font-weight: 800;
+      font-size: 1.1rem;
+      box-shadow: 0 0 25px rgba(34, 197, 94, 0.6);
+    }
+
+    .brand-text-title {
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .brand-text-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    nav a:hover {
+      color: #e5e7eb;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #22c55e, #4ade80);
+      transition: width 0.2s ease-out;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #4ade80, #22c55e, #a3e635);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .badge {
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      padding: 0.25rem 0.7rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      border: none;
+      padding: 0.7rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: radial-gradient(circle at 20% 0, #bbf7d0, #22c55e 40%, #16a34a 70%, #0f766e 100%);
+      color: #022c22;
+      box-shadow: 0 0 25px rgba(34, 197, 94, 0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      padding: 0.7rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-ghost:hover {
+      border-color: #4b5563;
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .hero-footnote {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .hero-card {
+      border-radius: 1.25rem;
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.18), rgba(15, 23, 42, 0.96));
+      padding: 1.4rem 1.3rem 1.3rem;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .hero-card-pill {
+      font-size: 0.7rem;
+      border-radius: 999px;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+    }
+
+    .hero-card-body {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero-card-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-card-stat {
+      flex: 1;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 0.6rem 0.7rem;
+    }
+
+    .hero-card-stat-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .hero-card-stat-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .hero-card-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.4), transparent);
+      margin: 0.7rem 0 0.8rem;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-card-footer-text {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .hero-card-footer-pill {
+      font-size: 0.7rem;
+      border-radius: 999px;
+      padding: 0.2rem 0.6rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      color: #bbf7d0;
+    }
+
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-kicker {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .section-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      max-width: 26rem;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.75rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      border-radius: 1.1rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 1.2rem 1.1rem 1.1rem;
+    }
+
+    .card-highlight {
+      border-color: rgba(34, 197, 94, 0.6);
+      box-shadow: 0 0 25px rgba(34, 197, 94, 0.25);
+      background: radial-gradient(circle at top left, var(--accent-soft), rgba(15, 23, 42, 0.98));
+    }
+
+    .field-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .field-label span {
+      color: var(--danger);
+    }
+
+    .field-input,
+    .field-select,
+    .field-textarea {
+      width: 100%;
+      border-radius: 0.7rem;
+      border: 1px solid #1f2937;
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      padding: 0.55rem 0.7rem;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .field-input:focus,
+    .field-select:focus,
+    .field-textarea:focus {
+      border-color: rgba(34, 197, 94, 0.7);
+      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.4);
+    }
+
+    .field-textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .form-group {
+      margin-bottom: 0.75rem;
+    }
+
+    .helper-text {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .pill {
+      font-size: 0.7rem;
+      border-radius: 999px;
+      padding: 0.15rem 0.55rem;
+      border: 1px solid #1f2937;
+      color: var(--text-muted);
+    }
+
+    .pill-accent {
+      border-color: rgba(34, 197, 94, 0.7);
+      color: #bbf7d0;
+      background: rgba(22, 163, 74, 0.15);
+    }
+
+    .list {
+      list-style: none;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .list li {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .list-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      margin-top: 0.4rem;
+      background: rgba(148, 163, 184, 0.9);
+    }
+
+    .list-bullet-accent {
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+    }
+
+    .tiers {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .tier {
+      border-radius: 0.9rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 0.8rem 0.8rem 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .tier-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .tier-name {
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .tier-note {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .tier-highlight {
+      border-color: rgba(34, 197, 94, 0.7);
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.25);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1.75rem;
+      align-items: flex-start;
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 0.9rem;
+      margin-top: 0.75rem;
+    }
+
+    .stat {
+      flex: 1;
+      border-radius: 0.9rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 0.6rem 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .stat-value {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      border-top: 1px solid #111827;
+      padding-top: 1.25rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.9rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+    }
+
+    .footer-links a:hover {
+      color: #e5e7eb;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .grid-two {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .tiers {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding-inline: 1rem;
+      }
+
+      .hero {
+        margin-bottom: 2.25rem;
+      }
+
+      .section {
+        margin-bottom: 2.25rem;
+      }
+
+      .form-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .tiers {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="brand-logo">GF</div>
+        <div>
+          <div class="brand-text-title">Geo Fishin</div>
+          <div class="brand-text-sub">Where every cast can change a story.</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#early-access">Early access</a>
+        <a href="#partners">Partner & donate</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div>
+          <div class="hero-kicker">Fishing • Rewards • Hope</div>
+          <h1 class="hero-title">
+            Turn every cast into a <span>quest for hope</span>.
+          </h1>
+          <p class="hero-sub">
+            Geo Fishin is a real‑world fishing experience with quests, rewards, and impact. 
+            Join early access to help shape the app—or partner with us to sponsor lakes, gear, and life‑changing stories.
+          </p>
+
+          <div class="hero-badges">
+            <div class="badge">
+              <span class="badge-dot"></span>
+              Early access spots are limited
+            </div>
+            <div class="badge">
+              🎣 Built by anglers, for anglers
+            </div>
+            <div class="badge">
+              💚 Connected to real‑world impact
+            </div>
+          </div>
+
+          <div class="hero-cta-row">
+            <button class="btn-primary" onclick="document.getElementById('early-access').scrollIntoView({behavior:'smooth'})">
+              Join early access
+              <span>→</span>
+            </button>
+            <button class="btn-ghost" onclick="document.getElementById('partners').scrollIntoView({behavior:'smooth'})">
+              Partner & donate
+            </button>
+          </div>
+          <div class="hero-footnote">
+            No spam. No noise. Just updates as we build Geo Fishin and launch new waters, quests, and rewards.
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Geo Fishin preview">
+          <div class="hero-card-header">
+            <div class="hero-card-title">Geo Fishin session preview</div>
+            <div class="hero-card-pill">Prototype • V0.1</div>
+          </div>
+          <div class="hero-card-body">
+            Imagine checking in at your favorite lake, logging your catch, and unlocking a quest that funds hope for someone else.
+          </div>
+
+          <div class="hero-card-row">
+            <div class="hero-card-stat">
+              <div class="hero-card-stat-label">Sample lake</div>
+              <div class="hero-card-stat-value">Desert Sunrise Reservoir</div>
+            </div>
+          </div>
+
+          <div class="hero-card-row">
+            <div class="hero-card-stat">
+              <div class="hero-card-stat-label">Quest streak</div>
+              <div class="hero-card-stat-value">7 days</div>
+            </div>
+            <div class="hero-card-stat">
+              <div class="hero-card-stat-label">Impact points</div>
+              <div class="hero-card-stat-value">1,240</div>
+            </div>
+          </div>
+
+          <div class="hero-card-divider"></div>
+
+          <div class="hero-card-footer">
+            <div class="hero-card-footer-text">
+              Early access members help decide lakes, rewards, and impact partners.
+            </div>
+            <div class="hero-card-footer-pill">
+              You’re not just a user—you’re a co‑builder.
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- EARLY ACCESS -->
+      <section id="early-access" class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Early access</div>
+            <h2 class="section-title">Get on the water before launch.</h2>
+          </div>
+          <p class="section-sub">
+            Join the early access list to test features, give feedback, and help shape how Geo Fishin works in the real world.
+          </p>
+        </div>
+
+        <div class="grid-two">
+          <div class="card card-highlight">
+            <form>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="field-label">Name <span>*</span></label>
+                  <input class="field-input" type="text" name="name" placeholder="Your name" required />
+                </div>
+                <div class="form-group">
+                  <label class="field-label">Email <span>*</span></label>
+                  <input class="field-input" type="email" name="email" placeholder="you@example.com" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="field-label">Where do you usually fish?</label>
+                <input class="field-input" type="text" name="location" placeholder="City, state, or favorite lake" />
+              </div>
+
+              <div class="form-group">
+                <label class="field-label">How do you want to use Geo Fishin?</label>
+                <select class="field-select" name="use_case">
+                  <option value="">Select one</option>
+                  <option>Casual fishing with rewards</option>
+                  <option>Family / youth trips</option>
+                  <option>Content creation & social</option>
+                  <option>Guiding / tournaments</option>
+                  <option>Nonprofit / outreach</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="field-label">Anything you’d love to see in the app?</label>
+                <textarea class="field-textarea" name="ideas" placeholder="Features, rewards, impact ideas, or lakes you’d love to see."></textarea>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+                  Request early access
+                </button>
+                <div class="helper-text">
+                  This form is a front‑end demo. Connect it to your email service, Google Form, or backend to capture signups.
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3 style="font-size:0.95rem;font-weight:600;margin-bottom:0.6rem;">What early access gets you</h3>
+            <ul class="list">
+              <li>
+                <span class="list-bullet list-bullet-accent"></span>
+                <span><strong>Feature voting:</strong> Help decide which lakes, quests, and reward types we launch first.</span>
+              </li>
+              <li>
+                <span class="list-bullet"></span>
+                <span><strong>Field testing:</strong> Try check‑ins, catch logs, and quest flows before public release.</span>
+             
